@@ -3,7 +3,7 @@ class Sorter:
         self._runtime = 0.0
     
     def get_runtime(self):
-        raise NotImplementedError()
+        return self._runtime
 
     def sorter_timsort(self, input_list):
-        raise NotImplementedError()
+        return sorted(input_list)
