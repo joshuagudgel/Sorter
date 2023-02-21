@@ -1,6 +1,9 @@
 class Sorter:
     def __init__(self):
-        self.runtime = float('inf')
+        self._runtime = 0.0
     
-    def merge_sort(self):
+    def get_runtime(self):
+        raise NotImplementedError()
+
+    def sorter_timsort(self, input_list):
         raise NotImplementedError()
