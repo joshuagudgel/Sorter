@@ -4,7 +4,11 @@ from sorter import Sorter
 UNSORTED: list = [4,2,1,6,9,3,7,5,8,0]
 EMPTY: list = []
 
-class TestTimsort(unittest.TestCase):
+class TestSorter(unittest.TestCase):
+
+    # setUp()
+    def setUp(self):
+        self.sorter = Sorter()
 
     # just an example    
     def test_sorter_timsort(self):
