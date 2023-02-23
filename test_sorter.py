@@ -6,18 +6,17 @@ EMPTY: list = []
 
 class TestSorter(unittest.TestCase):
 
-    # setUp()
+    # Unittest lib method to remove redundant set up code
     def setUp(self):
         self.sorter = Sorter()
 
-    # just an example    
+    # Initial example comparing two methods doing the same thing    
     def test_sorter_timsort(self):
         self.assertEqual(self.sorter.sorter_timsort(UNSORTED),sorted(UNSORTED))
 
-    """ define specifications for 'Sorter' """
-
-    """ timsort """
-    # timsort returns an ordered list
+    # Define specifications for 'Sorter'
+    
+    # Timsort returns an ordered list
     def test_timsort_in_order_unsorted(self):
         result = self.sorter.sorter_timsort(UNSORTED)
         for i in range(0,len(result)):
@@ -26,15 +25,16 @@ class TestSorter(unittest.TestCase):
                 self.assertGreater(curr,prev)
             prev = result[i]
     
-    # timsort returns empty from empty input
+    # Timsort returns empty from empty input
     def test_timsort_empty(self):
         self.assertEqual(self.sorter.sorter_timsort(EMPTY),sorted(EMPTY))
 
-    # object variable runtime is afloat
+    # Runtime is type: afloat
     def test_sorter_runtime_is_float(self):
         self.assertIsInstance(self.sorter.get_runtime(), float)
     
-    # runtime is updated after sort
+    # Runtime is updated after each sort
+    # TODO: this test has a chance of having a false negative
     def test_sorter_runtime_updates(self):
         initial_runtime = self.sorter.get_runtime()
         self.sorter.sorter_timsort(UNSORTED)
