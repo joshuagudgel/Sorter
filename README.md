@@ -2,7 +2,7 @@
 
 The initial goal of project this project is to practice responsible coding practices
 through Test Driven Development with common python tools, specifically Python's
-unit testing framework "unittest".
+unit testing framework "unittest."
 
 Test Driven Development starts with defining requirements in unit tests and then 
 writing the minimum amount of code to pass those tests.
