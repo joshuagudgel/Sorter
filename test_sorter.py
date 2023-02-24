@@ -51,7 +51,7 @@ class TestSorter(unittest.TestCase):
     # TODO: this test has a chance of having a false negative
     def test_sorter_runtime_updates(self):
         initial_runtime = self.sorter.get_runtime()
-        self.sorter.sorter_timsort(UNSORTED)
+        self.sorter.sorter_shuffle(UNSORTED)
         self.assertNotEqual(self.sorter.get_runtime(), initial_runtime)
 
 if __name__ == '__main__':
