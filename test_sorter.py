@@ -47,9 +47,9 @@ class TestSorter(unittest.TestCase):
     def test_sorter_runtime_is_float(self):
         self.assertIsInstance(self.sorter.get_runtime(), float)
     
-    # Runtime is updated after each sort
-    # TODO: this test has a chance of having a false negative
-    def test_sorter_runtime_updates(self):
+    # Runtime is updated after shuffle sort
+    # TODO: Has a chance of having a false negative
+    def test_sorter_shuffle_runtime_updates(self):
         initial_runtime = self.sorter.get_runtime()
         self.sorter.sorter_shuffle(UNSORTED)
         self.assertNotEqual(self.sorter.get_runtime(), initial_runtime)
