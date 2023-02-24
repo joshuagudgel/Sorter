@@ -1,4 +1,5 @@
 import random
+import time
 class Sorter:
     def __init__(self):
         self._runtime = 0.0
@@ -7,12 +8,17 @@ class Sorter:
         return self._runtime
 
     def sorter_timsort(self, input_list):
-        return sorted(input_list)
+        start = time.time()
+        result = sorted(input_list)
+        self._runtime = time.time() - start
+        return result
     
     def sorter_shuffle(self, input_list):
+        start = time.time()
         target = input_list.copy()
         while not self.list_in_order(target):
             random.shuffle(target)
+        self._runtime = time.time() - start
         return target
 
     def list_in_order(self, input_list):
