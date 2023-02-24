@@ -2,6 +2,7 @@ import unittest
 from sorter import Sorter
 
 UNSORTED: list = [4,2,1,6,9,3,7,5,8,0]
+UNSORTED_SHORT: list = [1, 4, 0, 3, 2]
 EMPTY: list = []
 
 class TestSorter(unittest.TestCase):
@@ -28,6 +29,19 @@ class TestSorter(unittest.TestCase):
     # Timsort returns empty from empty input
     def test_timsort_empty(self):
         self.assertEqual(self.sorter.sorter_timsort(EMPTY),sorted(EMPTY))
+
+    # Shuffle sort returns an ordered list
+    def test_shuffle_unsorted_short(self):
+        result = self.sorter.sorter_shuffle(UNSORTED_SHORT)
+        for i in range(0,len(result)):
+            if i > 0:
+                curr = result[i]
+                self.assertGreater(curr,prev)
+            prev = result[i]
+
+    # Shuffle sort returns empty from empty input
+    def test_timsort_empty(self):
+        self.assertEqual(self.sorter.sorter_shuffle(EMPTY),sorted(EMPTY))
 
     # Runtime is type: afloat
     def test_sorter_runtime_is_float(self):
