@@ -21,8 +21,16 @@ class Sorter:
         self._runtime = time.time() - start
         return target
 
+    # Merge sort
+    # O(nlogn) - the logn comes from the max height of binary tree
+    # Divide and conquer
+    def sorter_merge(self, input_list):
+        raise NotImplementedError()
+
     def list_in_order(self, input_list):
         for i in range(0, len(input_list)):
             if i > 0 and input_list[i] < input_list[i-1]:
                 return False
         return True
+    
+    # Helpers
