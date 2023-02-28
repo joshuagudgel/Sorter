@@ -1,5 +1,5 @@
 import random
-import time
+import timeit
 class Sorter:
     def __init__(self):
         self._runtime = 0.0
@@ -8,30 +8,57 @@ class Sorter:
         return self._runtime
 
     def sorter_timsort(self, input_list):
-        start = time.time()
+        start = timeit.default_timer()
         result = sorted(input_list)
-        self._runtime = time.time() - start
+        self._runtime = timeit.default_timer() - start
         return result
     
+    # Shuffle sort
+    # Randomly rearrange the list using python's random.shuffle
+    # until all elements are in order
     def sorter_shuffle(self, input_list):
-        start = time.time()
+        start = timeit.default_timer()
         target = input_list.copy()
         while not self.list_in_order(target):
             random.shuffle(target)
-        self._runtime = time.time() - start
+        self._runtime = timeit.default_timer() - start
         return target
+
+    # Bubble sort
+    # O(n^2)
+    # Cycle through list over and over
+    # pushing the largest number to the end until list is in order
+    def sorter_bubble(self, input_list):
+        start = timeit.default_timer()
+        result = input_list.copy()
+        swap_made = True
+        # Continue bubbling high values along the list as long as at least one swap is made
+        while swap_made:
+            swap_made = False
+            for i in range(0,len(result)):
+                # Swap value with adjacent value in list if left > right
+                if i < len(result)-1 and result[i] > result[i+1]:
+                    temp = result[i]
+                    result[i] = result[i+1]
+                    result[i+1] = temp
+                    swap_made = True
+        self._runtime = timeit.default_timer() - start
+        return result
 
     # Merge sort
     # O(nlogn) - the logn comes from the max height of binary tree
     # Divide and conquer
     def sorter_merge(self, input_list):
         l, r = [], []
+        start = timeit.default_timer()
         # Call mergesort on left half and right half
         if len(input_list) > 1:
             l = self.sorter_merge(input_list[:len(input_list)//2])
             r = self.sorter_merge(input_list[len(input_list)//2:])
         # Merge the two sides efficiently
-        return self.merge(l,r)
+        result = self.merge(l,r)
+        self._runtime = timeit.default_timer() - start
+        return result
     
     # Helpers
 
