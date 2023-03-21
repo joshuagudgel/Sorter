@@ -49,6 +49,7 @@ class Sorter:
     # O(nlogn) - the logn comes from the max height of binary tree
     # Divide and conquer
     def sorter_merge(self, input_list):
+        sort_type = "Merge  Sort"
         l, r = [], []
         start = timeit.default_timer()
         # Call mergesort on left half and right half
@@ -58,9 +59,18 @@ class Sorter:
         # Merge the two sides efficiently
         result = self.merge(l,r)
         self._runtime = timeit.default_timer() - start
+        self.write_to_log(input_list, result, sort_type)
         return result
     
     # Helpers
+
+    # Write output to log file
+    def write_to_log(self, input_list, output_list, sort_type):
+        with open("sorter.log", "a") as log:
+            log.write("Sort type: " + sort_type + "\n")
+            log.write("Input list: " + str(input_list) + "\n")
+            log.write("Output list: " + str(output_list) + "\n")
+            log.write("\n")
 
     # Merge sort helper
     def merge(self, left_half, right_half):
