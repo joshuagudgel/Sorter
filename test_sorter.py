@@ -8,7 +8,7 @@ class TestSorter():
 
     # Initial example comparing two methods doing the same thing    
     @pytest.mark.parametrize("test_input,expected", my_constants.LISTS)
-    def test_sorter_timsort(self, test_input, expected):
+    def test_sorter_timsort(self, test_input: tuple[list[int], list[int]], expected: tuple[list[int], list[int]]):
         #self.sorter = Sorter()
         assert self.sorter.sorter_timsort(test_input) == expected
 
@@ -16,7 +16,7 @@ class TestSorter():
     
     # Timsort returns an ordered list for each item in test list
     @pytest.mark.parametrize("test_input,expected", my_constants.LISTS)
-    def test_timsort_in_order(self, test_input,expected):
+    def test_timsort_in_order(self, test_input: tuple[list[int], list[int]],expected: tuple[list[int], list[int]]):
         #sorter = Sorter()
         assert self.sorter.sorter_timsort(test_input) == expected
     
@@ -38,7 +38,7 @@ class TestSorter():
 
     # Merge sort returns an ordered list for each list in tests list
     @pytest.mark.parametrize("test_input,expected", my_constants.LISTS)
-    def test_mergesort_in_order(self, test_input, expected):
+    def test_mergesort_in_order(self, test_input: tuple[list[int], list[int]], expected: tuple[list[int], list[int]]):
         #sorter = Sorter()
         assert self.sorter.sorter_merge(test_input) == expected
 
@@ -49,7 +49,7 @@ class TestSorter():
 
     # Bubble sort returns an ordered list for each list in tests list
     @pytest.mark.parametrize("test_input,expected", my_constants.LISTS)
-    def test_bubblesort_in_order(self, test_input, expected):
+    def test_bubblesort_in_order(self, test_input: tuple[list[int], list[int]], expected: tuple[list[int], list[int]]):
         #sorter = Sorter()
         assert self.sorter.sorter_bubble(test_input) == expected
 

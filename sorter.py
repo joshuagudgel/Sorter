@@ -53,7 +53,6 @@ class Sorter:
             r = self.sorter_merge(input_list[len(input_list)//2:])
         # Merge the two sides efficiently
         result = self.merge(l,r)
-        self.write_to_log(input_list, result, sort_type)
         return result
     
     # Helpers
@@ -79,10 +78,14 @@ class Sorter:
                 left_half = left_half[1:]
         # While elements remain in left half
         if len(left_half) > 0:
-            result.append(left_half)
+            while len(left_half) > 0:
+                result.append(left_half[0])
+                left_half = left_half[1:]
         # While elements remain in right half
         elif len(right_half) > 0:
-            result.append(right_half)
+            while len(right_half) > 0:
+                result.append(right_half[0])
+                right_half = right_half[1:]
         return result
 
     # Check if list is in order
@@ -91,3 +94,7 @@ class Sorter:
             if i > 0 and input_list[i] < input_list[i-1]:
                 return False
         return True
+    
+s = Sorter()
+input_list = [1, 5, 3, 2, 4]
+print(s.sorter_merge(input_list))
